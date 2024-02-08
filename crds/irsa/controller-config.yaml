@@ -1,0 +1,13 @@
+apiVersion: pkg.crossplane.io/v1alpha1
+kind: ControllerConfig
+metadata:
+  name: default
+  annotations:
+    # arn IRSA created before for Crossplane
+    # Using IAM Roles for ServiceAccounts - https://github.com/crossplane-contrib/provider-aws/blob/master/AUTHENTICATION.md
+    eks.amazonaws.com/role-arn: arn:aws:iam::$AWS_ACCOUNT_ID:role/$IAM_ROLE_NAME
+spec:
+  podSecurityContext:
+    fsGroup: 2000
+  args:
+  - --debug

@@ -1,0 +1,10 @@
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: aws-provider
+spec:
+  # Provider Documentation: https://marketplace.upbound.io/providers/crossplane-contrib/provider-aws/v0.44.0
+  package: xpkg.upbound.io/crossplane-contrib/provider-aws:v0.44.0
+  # ControlConfig name
+  controllerConfigRef:
+    name: default

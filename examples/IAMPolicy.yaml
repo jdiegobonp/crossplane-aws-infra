@@ -1,0 +1,35 @@
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: Policy
+metadata:
+  name: "iam-dynamodb-policy"
+spec:
+  forProvider:
+    description: "The IAM policy is be used by access to DynamoDB tables"
+    name: "iam-dynamodm-policy"
+    document: |
+      {
+      "Version": "2012-10-17",
+      "Statement": [
+          {
+              "Sid": "DynamoDBAccess",
+              "Effect": "Allow",
+              "Action": [
+                  "dynamodb:ListContributorInsights",
+                  "dynamodb:DescribeReservedCapacityOfferings",
+                  "dynamodb:ListGlobalTables",
+                  "dynamodb:ListTables",
+                  "dynamodb:UpdateItem",
+                  "dynamodb:DescribeReservedCapacity",
+                  "dynamodb:ListBackups",
+                  "dynamodb:PurchaseReservedCapacityOfferings",
+                  "dynamodb:DescribeLimits",
+                  "dynamodb:ListExports",
+                  "dynamodb:ListStreams",
+                  "dynamodb:DeleteItem"
+              ],
+              "Resource": "*"
+          }
+      ]
+      }
+  providerConfigRef:
+    name: default
